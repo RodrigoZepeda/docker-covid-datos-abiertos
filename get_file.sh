@@ -6,8 +6,7 @@ set -e
 set -u
 set -o pipefail
 
-cd /home
-touch covid-data/Yaestoyfuncionando.txt
+touch home/covid-data/Yaestoyfuncionando.txt
 
 #Bandera de que todo el proceso fue correcto
 flag_identified=true

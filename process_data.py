@@ -18,4 +18,4 @@ archivo  = pd.read_csv(file_name, usecols=lambda cc : cc in keep_cols, index_col
 archivo["FECHA_DESCARGA"] = datetime.now().strftime("%Y-%m-%d")
 archivo["HORA_DESCARGA"]  = datetime.now().strftime("%H:%M:%S")
 
-archivo.to_csv("/covid-data/COVID.csv", index = False)
+archivo.to_csv("home/covid-data/COVID.csv", index = False)
