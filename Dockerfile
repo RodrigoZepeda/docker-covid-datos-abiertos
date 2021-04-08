@@ -21,6 +21,10 @@ RUN pip install pandas==1.2.3
 COPY get_file.sh /
 COPY process_data.py /
 
+#Create dir to connect to volume
+RUN mkdir /covid-data
+
+
 #Cronjob
 COPY crontab /etc/cron.d/hello-cron
 RUN chmod 0644 /etc/cron.d/hello-cron
