@@ -1,4 +1,4 @@
-FROM python:alpine3.12
+FROM python:3.9-alpine3.12
 
 #Install pandas stuff + wget and unzip
 RUN apk add --no-cache --update \
@@ -8,18 +8,18 @@ RUN apk add --no-cache --update \
     libxml2 libxml2-dev \
     libxslt libxslt-dev \
     libjpeg-turbo-dev zlib-dev \
-    wget unzip bash
+    wget unzip
 
 #Update pip
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir pandas==1.2.3
+RUN pip3 install --no-cache-dir --upgrade pip && \
+    pip3 install --no-cache-dir pandas==1.2.3
 
 #Copy shell to download and python to clean
 COPY get_file.sh /
 COPY process_data.py /
 
 #Create dir to connect to volume
-RUN mkdir /covid-data
+RUN mkdir /home/covid-data
 
 #Cronjob
 COPY crontab /etc/cron.d/hello-cron

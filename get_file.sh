@@ -1,10 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 #Download file from datos abiertos gob and preprocess
 #file if -p option is included. Else, 
 #download raw file.
 set -e
 set -u
 set -o pipefail
+
+cd /home
+touch covid-data/Yaestoyfuncionando.txt
 
 #Bandera de que todo el proceso fue correcto
 flag_identified=true
