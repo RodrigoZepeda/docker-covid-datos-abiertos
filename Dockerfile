@@ -15,17 +15,19 @@ RUN pip3 install --no-cache-dir --upgrade pip && \
     pip3 install --no-cache-dir pandas==1.2.3
 
 #Copy shell to download and python to clean
-COPY get_file.sh /
-COPY process_data.py /
+ADD get_file.sh /
+ADD run_cron.sh /
+ADD process_data.py /
 
 #Create dir to connect to volume
 RUN mkdir /home/covid-data
 
 #Cronjob
-COPY crontab /etc/cron.d/hello-cron
+ADD crontab /etc/cron.d/hello-cron
 RUN chmod 0644 /etc/cron.d/hello-cron && \ 
     crontab /etc/cron.d/hello-cron && \
     touch /var/log/cron.log && \
-    chmod 777 get_file.sh
+    chmod 777 get_file.sh && \
+    chmod 777 run_cron.sh
 
-CMD ["crond", "-f"]
+CMD ["/run_cron.sh"]

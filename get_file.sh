@@ -6,7 +6,7 @@ set -e
 set -u
 set -o pipefail
 
-touch home/covid-data/Yaestoyfuncionando.txt
+touch /home/covid-data/Yaestoyfuncionando.txt
 
 #Bandera de que todo el proceso fue correcto
 flag_identified=true
@@ -71,3 +71,4 @@ while $flag_decompressed & $flag_copied & $flag_identified & $flag_processed; do
     fi
 
 done
+echo "Todo salió bien"
